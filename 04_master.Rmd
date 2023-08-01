@@ -1,11 +1,4 @@
 ---
-title: "04_Master.Rmd"
-author: "Lauren"
-date: "2023-08-01"
-output: html_document
----
-
----
 title: "Master script for postfire analysis"
 output: html_document
 ---
@@ -39,8 +32,7 @@ plot.NDVI(dat)
 
 Q1: This plot suggests that Fynbos greenness (NDVI) as observed from satellite saturates with time since fire. Why do you think it saturates rather than increasing linearly with time?
 
->*Answer 1:*
-
+>*Answer 1:*It will saturate because the sattellite is from above so will reach a maximum  greeness. After this point the plants will be growing vertically not showing a significant change. It will then fluctuate due to seasonal fluctuation.
 <br>
 
 ### 2. Fit models using Non-linear Least Squares (NLS)
@@ -106,8 +98,7 @@ Lots more parameters...
 
 Q2: How do the estimates for the common parameters compare?
 
->*Answer 2:*
-
+>*Answer 2:* When incorporating seasonal variation, the alpha parameter decreases by 0.04 units and has a slightly more significant p-value. The gamma parameter increased by 0.04 with no noticible change in the p-value. The lamda parameter decreases by 0.19 with a more significant p-value.
 <br>
 
 ### 3. Compare NLS models using ANOVA
@@ -119,16 +110,15 @@ Modelers often want to know which of a set of models are better. One way to do t
 ```{r}
 anova(fit_negexp, fit_negexpS)
 ```
-
 <br>
 
 Q3: Which model is better?
 
->*Answer 3:*
+>*Answer 3:* Model 2 ,as the p-value is significant (<0.001) meaning we have enough evidence to reject the null hypothesis and conclude that the full model significantly reduces theresidual sum of squares and is therefore better.
 
 Q4: How many degrees of freedom are there in this ANOVA and why (i.e. what are they)?
 
->*Answer 4:*
+>*Answer 4:* There are 2 as the second model has two more parameters than the first model. 
 
 <br>
 
@@ -221,7 +211,7 @@ AIC_simple - AIC_full
 
 Q5: Is there a preferred model and if so, which one?
 
->*Answer 5:*
+>*Answer 5:* Yes, the second (full) model is preferred as the AIC is lower and therefore better decsribes the variaton without excessive parameters. It is significantly better as it's AIC value is more than 3 units than the simple models. 
 
 <br>
 
